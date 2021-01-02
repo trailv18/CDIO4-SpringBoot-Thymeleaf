@@ -112,8 +112,8 @@
                 <button type="button" class="btn btn-light btn-sm border rounded-pill" data-toggle="dropdown" 
                         aria-haspopup="true" aria-expanded="false">                        
                   <th:block th:switch="${filters.sort}">                    
-                    <span id="dropdown-sort-text" th:case="'priceasc'">Giá Cao - Thấp</span>
-                    <span id="dropdown-sort-text" th:case="'pricedesc'">Giá Thấp - Cao</span>
+                    <span id="dropdown-sort-text" th:case="'priceasc'">Giá Thấp - Cao</span>
+                    <span id="dropdown-sort-text" th:case="'pricedesc'">Giá Cao - Thấp</span>
                     <span id="dropdown-sort-text" th:case="'alphasc'">Từ A - Z</span>
                     <span id="dropdown-sort-text" th:case="'alphdesc'">Từ Z - A</span>
                     <span id="dropdown-sort-text" th:case="*">Mới nhất</span>
@@ -122,8 +122,8 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right shadow-sm">
                   <button class="dropdown-item button-sort" type="button" value="newest">Mới nhất</button>
-                  <button class="dropdown-item button-sort" type="button" value="priceasc">Giá Cao - Thấp</button>
-                  <button class="dropdown-item button-sort" type="button" value="pricedesc">Giá Thấp - Cao</button>
+                  <button class="dropdown-item button-sort" type="button" value="priceasc">Giá Thấp - Cao</button>
+                  <button class="dropdown-item button-sort" type="button" value="pricedesc">Giá Cao - Thấp</button>
                   <button class="dropdown-item button-sort" type="button" value="alphasc">Từ A - Z</button>
                   <button class="dropdown-item button-sort" type="button" value="alphdesc">Từ Z - A</button>
                 </div>
