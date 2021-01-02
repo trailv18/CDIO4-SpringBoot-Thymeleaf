@@ -29,7 +29,7 @@ public class StoreController {
 		Integer page = filters.getPage();			
 		int pagenumber = (page == null ||  page <= 0) ? 0 : page-1;
 		SortFilter sortFilter = new SortFilter(filters.getSort());	
-		Page<Product> pageresult = productService.findProductsByCriteria(PageRequest.of(pagenumber,9, sortFilter.getSortType()), 
+		Page<Product> pageresult = productService.findProductsByCriteria(PageRequest.of(pagenumber,12, sortFilter.getSortType()), 
 																filters.getPricelow(), filters.getPricehigh(), 
 																filters.getSize(), filters.getCategory(), filters.getBrand(), filters.getSearch());	
 		model.addAttribute("allCategories", productService.getAllCategories());
