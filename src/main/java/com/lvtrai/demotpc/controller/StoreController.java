@@ -37,7 +37,7 @@ public class StoreController {
 		model.addAttribute("allSizes", productService.getAllSizes());
 		model.addAttribute("products", pageresult.getContent());
 		model.addAttribute("totalitems", pageresult.getTotalElements());
-		model.addAttribute("itemsperpage", 9);
+		model.addAttribute("itemsperpage", 12);
 		return "store";
 	}
 	
