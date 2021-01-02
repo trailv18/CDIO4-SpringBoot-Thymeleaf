@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+
+
+<body class="d-flex flex-column" >
+  <div th:replace="common/header :: navbar"> </div>
+
+  
+  <div class="jumbotron jumbotron-fluid mt-0 py-5" th:style="'background-image: url(/image/background/bg.jpg);'">
+  	<div class="container">
+      <div class="row text-left py-5">   
+         <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto py-5">  
+            <h2 class="bg-warning text-dark d-inline-block p-1">Thương Hiệu Mới</h2>
+            <h1 class="font-weight-bold">Sản Phẩm Chất Lượng Cao</h1>
+            <a th:href="@{/store}" class="btn btn-primary rounded-pill" data-addclass-on-xs="btn-sm">MUA NGAY</a>       
+          </div> 
+      </div>
+  </div>
+  </div>  
+   
+  
+  <section class="section py-5 ">
+    <div class="container text-center">
+      <h4 class="font-weight-bold ">Sản Phẩm Mới</h4>
+        <div class="featured-items mt-4">        
+          <div class="card card-product card-featured" th:each="product : ${products}">
+            <div class="card-body d-flex flex-column justify-content-between h-100">
+              <a style="text-decoration: none;" th:href="@{/product-detail?id=}+${product.id}"><img class="card-img-top" th:src="${product.picture} ? ${product.picture} : '/image/logo.png'" alt="Card image cap"></a>
+              <div>
+              	<a style="text-decoration: none;font-size: 10px;" th:href="@{/product-detail?id=}+${product.id}" class="card-title truncate-1-lines" th:text="${product.name}"></a>
+              	<div class="price mb"><span th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')}+' VNĐ'"></span></div>
+              </div>
+            </div>              
+          </div>
+        </div>
+    </div>
+  </section>
+    
+  <section class="section pt-5">
+    <div class="container text-center">
+      <h4 class="font-weight-bold">Thương hiệu nổi tiếng.</h4>
+      <div class="featured-brands mt-3">   
+         <img class="img-fluid py-5 px-5" src="/image/brands/01.png">
+         <img class="img-fluid py-5 px-5" src="/image/brands/02.png">
+         <img class="img-fluid py-5 px-5" src="/image/brands/03.png">
+         <img class="img-fluid py-5 px-5" src="/image/brands/04.png">
+         <img class="img-fluid py-5 px-5" src="/image/brands/05.png">
+         <img class="img-fluid py-5 px-5" src="/image/brands/06.png">
+         <img class="img-fluid py-5 px-5" src="/image/brands/07.png">
+      </div>     
+      
+    </div>  
+  </section>  
+  
+  <div th:replace="common/header :: footer"> </div>  
+  <div th:replace="common/header :: body-scripts"> </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.featured-items').slick({
+    	  infinite: true,
+    	  slidesToShow: 4,
+    	  slidesToScroll: 4,
+    	  responsive: [
+    	    {
+    	      breakpoint: 1200,
+    	      settings: {
+    	        slidesToShow: 3,
+    	        slidesToScroll: 3,
+    	      }
+    	    },
+    	    {
+    	      breakpoint: 768,
+    	      settings: {
+    	        slidesToShow: 2,
+    	        slidesToScroll: 2
+    	      }
+    	    },
+    	    {
+    	      breakpoint: 480,
+    	      settings: {
+    	        slidesToShow: 1,
+    	        slidesToScroll: 1
+    	      }
+    	    }    	    
+    	  ]
+      })
+      .on('setPosition', function (event, slick) {
+		slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+	});
+      $('.featured-brands').slick({
+    	  slidesToShow: 6,
+    	  slidesToScroll: 1,
+    	  responsive: [
+      	    {
+      	      breakpoint: 1200,
+      	      settings: {
+      	        slidesToShow: 5,
+      	        slidesToScroll: 1,
+      	      }
+      	    },
+      	    {
+      	      breakpoint: 992,
+      	      settings: {
+      	        slidesToShow: 4,
+      	        slidesToScroll: 4
+      	      }
+      	    },
+      	    {
+      	      breakpoint: 768,
+      	      settings: {
+      	        slidesToShow: 3,
+      	        slidesToScroll: 3
+      	      }
+      	    },
+      	  	{
+      	      breakpoint: 550,
+      	      settings: {
+      	        slidesToShow: 2,
+      	        slidesToScroll: 2
+      	      }
+      	    },
+      	  	{
+      	      breakpoint: 380,
+      	      settings: {
+      	        slidesToShow: 1,
+      	        slidesToScroll: 1
+      	      }
+      	    }, 
+      	  ]
+      });
+    });
+  </script>
+</body>
+</html>

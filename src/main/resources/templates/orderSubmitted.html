@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+
+
+<body class="d-flex flex-column">
+  <div th:replace="common/header :: navbar"> </div>
+
+  <div class="container page-content">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center py-3">
+          <i data-feather="check-circle" class="text-success" width="48" height="48"></i>
+          <h1>Cảm ơn!</h1>
+          <p>Đơn hàng của bạn đã được đặt và sẽ được xử lý trong thời gian sớm nhất.</p>
+          <p class="mb-0">
+            <span class="text-muted">Mã đơn hàng: </span>
+            <span class="text-info">#ORD<span th:text="${order.id}"></span></span>
+          </p>
+          <p>
+            <span class="text-muted">Số lượng: </span>
+            <span class="text-info"><span th:text="${order.orderTotal} +' VNĐ'"></span></span>
+          </p>
+          <p>Ngày giao hàng dự kiến ​​là <span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></p>
+          <a th:href="@{/store}" class="btn btn-info rounded mb-3">TIẾP TỤC MUA HANGD</a>
+          <a th:href="@{/order-detail?order=}+${order.id}" class="btn btn-primary rounded mb-3">XEM ĐƠN HÀNG</a>
+        </div>
+      </div>
+    </div>  
+  </div> <!-- end container -->
+  
+  <div th:replace="common/header :: footer"> </div>
+  <div th:replace="common/header :: body-scripts"> </div>
+</body>
+</html>

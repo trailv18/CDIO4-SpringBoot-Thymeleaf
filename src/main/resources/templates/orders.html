@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+
+
+<body class="d-flex flex-column">
+  <div th:replace="common/header :: navbar"> </div>
+
+  <div class="container page-content">
+    <div class="row">
+      
+       <div class="col-md-4 col-lg-3">
+        <div class="card">
+         <div class="card-body text-center">
+            <img src="/image/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
+            <h5 class="bold mb-0" th:text="${#strings.capitalize(user.username)}"></h5>
+            <i style="color: green;" class="fas fa-circle"></i>
+            <small class="text-secondary" th:text="'Online '+${#dates.format(#dates.createNow(), 'dd, MM, yyyy')}"></small>       
+          </div>
+          <div class="list-group list-group-flush">
+            <a th:href="@{/user/profile}" class="list-group-item list-group-item-action"><i data-feather="user" class="mr-3"></i>Tài khoản</a>
+            <a th:href="@{/user/orders}" class="list-group-item list-group-item-action active"><i data-feather="shopping-bag" class="mr-3"></i> Đơn hàng</a>
+            <a th:href="@{/user/address}" class="list-group-item list-group-item-action"><i data-feather="map" class="mr-3"></i> Địa chỉ</a>
+            <a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i data-feather="log-out" class="mr-3"></i> Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+      
+       <div class="col mt-3 mt-md-0">
+          <div class="card">
+            <div class="card-body">
+              <h3>My Orders</h3><hr>
+              <div class="table-responsive">
+                <table class="table table-hover" data-addclass-on-xs="table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Mã Đơn Hàng</th>
+                      <th scope="col">Ngày</th>
+                      <th scope="col" class="text-center">Tổng</th>
+                      <th scope="col" class="text-center">Trạng Thái</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="order : ${orders}">
+                      <th scope="row" ><a style="text-decoration: none;" th:href="@{/user/order-detail?order=}+${order.id}" class="text-primary">ORD<span th:text="${order.id}"></span></a></th>                      
+                      <td th:text="${#dates.format(order.orderDate, 'dd-MM-yyyy')}"></td>
+                      <td class="text-right"><span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'COMMA', 0, 'POINT')}+' VNĐ'"></span></td>
+                      <td class="text-center"><span class="badge badge-info rounded" th:text="${order.orderStatus}"></span></td>
+                    </tr>                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div> <!--  end container -->
+  
+  <div th:replace="common/header :: footer"> </div>
+  
+  
+  <div th:replace="common/header :: body-scripts"> </div>
+</body>
+</html>
