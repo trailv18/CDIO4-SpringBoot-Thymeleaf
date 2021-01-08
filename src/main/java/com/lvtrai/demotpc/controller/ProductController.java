@@ -42,7 +42,7 @@ public class ProductController {
 	@PostMapping("/add")
 	public String addProductPost(@ModelAttribute("product") Product product, HttpServletRequest request) {
 		Product newProduct = new ProductBuilder()
-				.withTitle(product.getName())
+				.withName(product.getName())
 				.stockAvailable(product.getStock())
 				.description(product.getDescription())
 				.withPrice(product.getPrice())
@@ -90,7 +90,7 @@ public class ProductController {
 	@PostMapping("/edit")
 	public String editProductPost(@ModelAttribute("product") Product product, HttpServletRequest request) {		
 		Product newProduct = new ProductBuilder()
-				.withTitle(product.getName())
+				.withName(product.getName())
 				.stockAvailable(product.getStock())
 				.description(product.getDescription())
 				.withPrice(product.getPrice())

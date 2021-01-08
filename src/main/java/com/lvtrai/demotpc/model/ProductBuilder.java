@@ -18,8 +18,8 @@ public class ProductBuilder {
 	public ProductBuilder() {
 	}
 	
-	public ProductBuilder withTitle(String title) {
-		this.name = title;
+	public ProductBuilder withName(String name) {
+		this.name = name;
 		return this;
 	}
 	

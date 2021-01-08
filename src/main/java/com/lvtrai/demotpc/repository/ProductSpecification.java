@@ -43,7 +43,7 @@ public class ProductSpecification {
                 }  
                 
                 if(search!=null && !search.isEmpty()) {
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("title"), "%"+search+"%")));
+                    predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("name"), "%"+search+"%")));
                 }
                 if (priceLow!=null && priceLow >= 0) {
                     predicates.add(criteriaBuilder.and(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), priceLow)));
