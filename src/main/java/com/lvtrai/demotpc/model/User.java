@@ -37,7 +37,7 @@ import com.lvtrai.demotpc.security.UserRole;
 )
 @Entity
 @SuppressWarnings("serial")
-@Table(name="use")
+@Table(name="user")
 public class User implements UserDetails {
 	
 	@Id
