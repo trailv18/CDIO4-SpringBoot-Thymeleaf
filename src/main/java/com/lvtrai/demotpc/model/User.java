@@ -17,7 +17,6 @@ import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedSubgraph;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -37,13 +36,13 @@ import com.lvtrai.demotpc.security.UserRole;
 )
 @Entity
 @SuppressWarnings("serial")
-@Table(name="user")
 public class User implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id", nullable=false, updatable=false)
 	private Long id;
+	
 	@NotNull
 	private String username;
 	private String password;
