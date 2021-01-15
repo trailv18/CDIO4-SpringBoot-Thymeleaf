@@ -22,7 +22,6 @@
               <div class="col-8">
                 <a style="text-decoration: none;"  th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h6 bold d-inline-block" th:text=${cartItem.product.name}></a>
                   <br>
-                  <div><small><b>Kích cỡ</b>: <span th:text="${cartItem.size}"></span></small></div>                  
                   <small><b>Giá</b>: <span th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 0, 'POINT')}+' VNĐ'"></span></small>
               </div>
               
@@ -46,7 +45,7 @@
        </div>
     </div>  
     <div class="row">
-      <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center text-left-lg">
+      <div class="col-12 col-sm-6 col-lg-4 mb-2 text-left-lg">
         <h5 class="font-weight-bold">Chi tiết đặt hàng</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
           <div><strong>Ngày đặt hàng: </strong><span th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></span></div>
@@ -55,7 +54,7 @@
         </div>        
         <hr class="d-block d-sm-none">
       </div>
-      <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center">
+      <div class="col-12 col-sm-6 col-lg-4 mb-2">
         <h5 class="font-weight-bold">Giao hàng</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
           <div><strong>Khách hàng: </strong><span th:text="${order.shipping.receiver}"></span></div>
@@ -65,12 +64,10 @@
         </div>
         <hr class="d-block d-sm-none">        
       </div>
-      <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center">
+      <div class="col-12 col-sm-6 col-lg-4 mb-2">
         <h5 class="font-weight-bold">Thanh Toán</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
           <div><strong>Thanh toán: </strong><span th:text="${order.payment.type}"></span></div>    
-          <div><strong>Tên chủ thẻ: </strong><span th:text="${order.payment.holderName}"></span></div>
-          <div><strong>Số thẻ: </strong><span th:text="${order.payment.cardNumber}"></span></div>
         </div>
       </div>
     </div>

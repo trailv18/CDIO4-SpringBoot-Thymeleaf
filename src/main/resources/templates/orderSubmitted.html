@@ -22,8 +22,8 @@
             <span class="text-info"><span th:text="${order.orderTotal} +' VNĐ'"></span></span>
           </p>
           <p>Ngày giao hàng dự kiến ​​là <span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></p>
-          <a th:href="@{/store}" class="btn btn-info rounded mb-3">TIẾP TỤC MUA HANGD</a>
-          <a th:href="@{/order-detail?order=}+${order.id}" class="btn btn-primary rounded mb-3">XEM ĐƠN HÀNG</a>
+          <a th:href="@{/store}" class="btn btn-info rounded mb-3">TIẾP TỤC MUA HÀNG</a>
+          <a th:href="@{user/order-detail?order=}+${order.id}" class="btn btn-primary rounded mb-3">XEM ĐƠN HÀNG</a>
         </div>
       </div>
     </div>  

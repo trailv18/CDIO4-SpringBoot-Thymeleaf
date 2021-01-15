@@ -37,7 +37,6 @@
               </h2>              
               <h6>(<span th:text="${product.stock}"></span> trong kho)</h6>
             </div>            
-            <p class="d-none d-lg-block" th:text="${product.description}"></p>
             <form th:action="@{/shopping-cart/add-item}" method="post">
               <input hidden="hidden" th:field="*{product.id}">  
               <div class="form-row">
@@ -65,6 +64,8 @@
               </div>
             </form>
             <hr>
+            <p class="d-none d-lg-block" th:text="${product.description}"></p>
+            
             <div class="pt-1 mb-2">Loại Sản Phẩm: <span class="text-medium" th:text="${preselectedCategorys}+'.'"></span></div>
             <div class="padding-bottom-1x mb-2">Thương hiệu: <span class="text-medium" th:text="${preselectedBrands}+'.'"></span></div>
            </div>

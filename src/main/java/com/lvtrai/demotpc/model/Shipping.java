@@ -22,6 +22,8 @@ public class Shipping {
 	private Address address;	
 	@OneToOne
 	private Order order;
+	
+	private String phone;
 
 	public Long getId() {
 		return id;
@@ -53,6 +55,14 @@ public class Shipping {
 
 	public void setOrder(Order order) {
 		this.order = order;
-	}	
+	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}	
+	
 }

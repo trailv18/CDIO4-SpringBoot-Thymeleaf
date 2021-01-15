@@ -73,6 +73,10 @@
                       <label for="receiver">Tên người nhận: </label> 
                       <input type="text" class="form-control" id="receiver" name="receiver" required="required"/>
                     </div> 
+                     <div class="form-group col-6">
+                      <label for="receiver">Số điện thoại: </label> 
+                      <input type="text" class="form-control" id="phone" name="phone" required="required"/>
+                    </div>
                     <div class="form-group col-6">
                       <label for="streetAddress">Địa chỉ: </label> 
                       <input type="text" class="form-control" id="streetAddress" name="streetAddress" required="required" />
@@ -116,96 +120,37 @@
 					
 				</div>
 			 </div>
-			 
-			 
-			 <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">                
-                <div class="mt-2 text-right">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                      class="btn btn-primary rounded-pill" href="#collapse2">Tiếp<i data-feather="arrow-right"></i></a>
-                </div>          
-              </div>
-			 
+			 			 
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-body border-bottom">
-                  <div class="row">
-                    <div class="col-12">
-                      <img src="/image/creditcard.png" class="img-fluid mb-2" /><br />
-                      <div class="form-group">
-                        <label for="cardType">Chọn loại thẻ: </label> 
-                        <select  class="form-control" id="cardName" name="cardName">
-                          <option value="visa">Visa</option>
-                          <option value="mastercard">Mastercard</option>
-                          <option value="atm">ATM Nội Địa</option>
-                        </select>
-                      </div>
+                     <script src="https://www.paypal.com/sdk/js?client-id=Aa8ZMQ959kPBV_aazpg1LLjyZIyrkFHLvIfF7st-a2ok0Q2YRmbpSXn3mlSA2fFRJbWuWYo_KdIUeNEX"> // Replace YOUR_SB_CLIENT_ID with your sandbox client ID
+   		 			 </script>
 
-                      <div class="form-group">
-                        <label for="cardHolder">Tên Chủ Thẻ:</label> 
-                        <input type="text" class="form-control" id="cardHolder"
-                          required="required" name="holderName" value="Tên Chủ Thẻ">
-                      </div>
-                      <div class="form-group">
-                        <label for="cardNumber">Số Thẻ:</label>
-                        <div class="input-group">
-                          <input type="tel" class="form-control" id="cardNumber"
-                            required="required" name="cardNumber" value="Số Thẻ">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+    				<div id="paypal-button-container"></div>
+					<div class="d-none">
+						<span id="total" th:text="${(shoppingCart.getGrandTotal() + 50000)/24000}"> </span>
+					</div>
+    				<!-- Add the checkout buttons, set up the order and approve the order -->
+				    <script>
+				   	  var total = document.getElementById("total").innerText;
 
-                  <div class="row">
-                    <div class="col-7">
-                      <div class="form-group">
-                        <label>Hết Hạn:</label>
-                        <div class="row">
-                          <div class="col-6">
-                            <select class="form-control" name="expiryMonth"
-                              required="required">
-                              <option disabled="disabled">-- Tháng --</option>
-                              <option value="1">01</option>
-                              <option value="2">02</option>
-                              <option value="3">03</option>
-                              <option value="4">04</option>
-                              <option value="5">05</option>
-                              <option value="6">06</option>
-                              <option value="7">07</option>
-                              <option value="8">08</option>
-                              <option value="9">09</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                            </select>
-                          </div>
-                          <div class="col-6">
-                            <select class="form-control" name="expiryYear"> 
-                              <option disabled="disabled">-- Năm --</option>
-                              <option value="2020">2020</option>
-                              <option value="2021">2021</option>
-                              <option value="2022">2022</option>
-                              <option value="2023">2023</option>
-                              <option value="2024">2024</option>
-                              <option value="2025">2025</option>
-                              <option value="2026">2026</option>
-                              <option value="2027">2027</option>
-                              <option value="2028">2028</option>
-                              <option value="2029">2029</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label for="cardCVC">Mã CVV</label> 
-                        <input id="cardCVC" type="tel" class="form-control" name="cvc" value="0"/>
-                      </div>
-                    </div>
-                  </div>  
-                  <div class="mt-2 text-right">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                      class="btn btn-primary rounded-pill" href="#collapseThree">Tiếp <i data-feather="arrow-right"></i></a>
-                  </div>                
+				      paypal.Buttons({
+				        createOrder: function(data, actions) {
+				          return actions.order.create({
+				            purchase_units: [{
+				              amount: {
+				                value: total
+				              }
+				            }]
+				          });
+				        },
+				        onApprove: function(data, actions) {
+				          return actions.order.capture().then(function(details) {
+				        	 alert("Thanh toán thành công!");
+				          });
+				        }
+				      }).render('#paypal-button-container'); // Display payment options on your web page
+				    </script>
                 </div>                
               </div>
             </div>            
@@ -224,12 +169,12 @@
               </div>
               <div class="d-flex justify-content-between">
                 <span>Giao hàng: </span>
-                <span>Miễn phí.</span>
+                <span>50,000 VNĐ</span>
               </div>
               <hr>
               <div class="d-flex justify-content-between">
                 <span>Tổng cộng: </span>
-                <span class="font-weight-bold"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 0, 'POINT')}+' VNĐ'"> </span></span>
+                <span class="font-weight-bold"><span id="total" th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal() + 50000, 0, 'COMMA', 0, 'POINT')}+' VNĐ'"> </span></span>
               </div>
             </div>
             <div class="card-footer bg-white border-top-0">

@@ -55,12 +55,9 @@ public class CheckoutControler {
 		if (!shoppingCart.isEmpty()) {
 			shipping.setAddress(address);
 			if(payment.getType().equals("shipcode")) {
-				payment.setCardName("NULL");
-				payment.setCardNumber("NULL");
-				payment.setCvc(0);
-				payment.setExpiryMonth(0);
-				payment.setExpiryYear(0);
-				payment.setHolderName("NULL");
+				payment.setStatus("Chưa thanh toán");
+			}else {
+				payment.setStatus("Đã thanh toán");
 			}
 			Order order = orderService.createOrder(shoppingCart, shipping, payment, user);		
 			redirectAttributes.addFlashAttribute("order", order);
