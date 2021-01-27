@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			
 		http.authorizeRequests()
 		.antMatchers(PUBLIC_MATCHERS).permitAll()
-        .antMatchers("/product/**","/admin").hasRole("ADMIN")
+        .antMatchers("/product/**","/admin", "/order/**").hasRole("ADMIN")
         .antMatchers("/shopping-cart/**").hasRole("USER")
         .and()
         .csrf().disable().cors().disable()

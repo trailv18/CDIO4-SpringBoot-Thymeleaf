@@ -16,4 +16,6 @@ public interface OrderService {
 	List<Order> findByUser(User user);
 	
 	Order findOrderWithDetails(Long id);
+	
+	Iterable<Order> findAllOrder();
 }

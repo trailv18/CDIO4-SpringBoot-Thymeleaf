@@ -73,4 +73,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderRepository.findByUser(user);
 	}
 
+	@Override
+	public Iterable<Order> findAllOrder() {
+		// TODO Auto-generated method stub
+		return orderRepository.findAll();
+	}
+
 }

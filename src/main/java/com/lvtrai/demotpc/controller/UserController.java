@@ -57,7 +57,7 @@ public class UserController {
 		return "orders";
 	}
 	
-	@RequestMapping("/address")
+	@RequestMapping("/user-address")
 	public String myAddress(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
@@ -73,7 +73,7 @@ public class UserController {
 		}
 		currentUser.setAddress(address);
 		userService.save(currentUser);
-		return "redirect:/my-address";
+		return "redirect:/user/user-address";
 	}
 	
 	
@@ -90,13 +90,13 @@ public class UserController {
 		User existingUser = userService.findByUsername(user.getUsername());
 		if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
 			model.addAttribute("usernameExists", true);
-			return "myProfile";
+			return "profile";
 		}	
 		/*check email already exists*/
 		existingUser = userService.findByEmail(user.getEmail());
 		if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
 			model.addAttribute("emailExists", true);
-			return "myProfile";
+			return "profile";
 		}			
 		/*update password*/
 		if (newPassword != null && !newPassword.isEmpty() && !newPassword.equals("")){
@@ -106,7 +106,7 @@ public class UserController {
 				currentUser.setPassword(passwordEncoder.encode(newPassword));
 			} else {
 				model.addAttribute("incorrectPassword", true);
-				return "myProfile";
+				return "profile";
 			}
 		}		
 		currentUser.setFirstName(user.getFirstName());
@@ -117,7 +117,7 @@ public class UserController {
 		model.addAttribute("updateSuccess", true);
 		model.addAttribute("user", currentUser);				
 		userSecurityService.authenticateUser(currentUser.getUsername());		
-		return "myProfile";
+		return "profile";
 	}
 	
 	@RequestMapping("/order-detail")

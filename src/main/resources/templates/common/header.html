@@ -58,7 +58,7 @@
 				<ul class="navbar-nav ml-auto">	
 				
 					<li class="nav-item pl-1 d-flex w-100 justify-content-between">
-						<a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/shopping-cart/cart}">
+						<a class="nav-link" sec:authorize="hasRole('USER')" th:href="@{/shopping-cart/cart}">
 							<i class="fas fa-cart-plus"></i> 
 							<span class="badge badge-primary badge-pill" style="vertical-align: top;"
 							th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span>

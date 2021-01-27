@@ -20,7 +20,7 @@
           <div class="list-group list-group-flush">
             <a th:href="@{/user/profile}" class="list-group-item list-group-item-action"><i data-feather="user" class="mr-3"></i>Tài khoản</a>
             <a th:href="@{/user/orders}" class="list-group-item list-group-item-action"><i data-feather="shopping-bag" class="mr-3"></i> Đơn hàng</a>
-            <a th:href="@{/user/address}" class="list-group-item list-group-item-action active"><i data-feather="map" class="mr-3"></i> Địa chỉ</a>
+            <a th:href="@{/user/user-address}" class="list-group-item list-group-item-action active"><i data-feather="map" class="mr-3"></i> Địa chỉ</a>
             <a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i data-feather="log-out" class="mr-3"></i> Đăng xuất</a>
           </div>
         </div>
@@ -29,8 +29,8 @@
        <div class="col mt-3 mt-md-0">
           <div class="card">
             <div class="card-body">
-              <h3>Địa Chỉ</h3><hr>
-              <form th:action="@{/update-user-address}" method="post">
+              <h3>ĐỊA CHỈ</h3><hr>
+              <form th:action="@{/user/update-user-address}" method="post">
                 <div class="form-row">
                   <div class="form-group col-12">
                     <label for="billingAddress">Địa chỉ</label>

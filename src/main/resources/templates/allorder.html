@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body>
+
+  <div th:replace="adminHome :: navbarAdmin"> </div>
+
+  <div class="col mt-3 mt-md-0 my-5">
+          <div class="card">
+            <div class="card-body">
+              <h3>Đơn Hàng</h3><hr>
+              <div class="table-responsive">
+                <table class="table table-hover" data-addclass-on-xs="table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Mã Đơn Hàng</th>
+                      <th scope="col">Ngày</th>
+                      <th scope="col" class="text-center">Tổng</th>
+                      <th scope="col" class="text-center">Trạng Thái</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="order : ${orders}">
+                      <th scope="row">ORD<span th:text="${order.id}"></span></th>                      
+                      <td th:text="${#dates.format(order.orderDate, 'dd-MM-yyyy')}"></td>
+                      <td class="text-right"><span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'COMMA', 0, 'POINT')}+' VNĐ'"></span></td>
+                      <td class="text-center"><span class="badge badge-info rounded" th:text="${order.orderStatus}"></span></td>
+                    </tr>                    
+                  </tbody>
+                  
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+  <div th:replace="common/header :: body-scripts"> </div>
+</body>
+</html>
